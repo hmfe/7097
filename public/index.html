@@ -1,0 +1,108 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="searchTodo">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>HM Todo App</title>
+
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+	<div class="container">
+
+		<!-- HEADER AND TODO COUNT -->
+		<div class="jumbotron text-center">
+			<h1> <span class="label label-info">{{ todos.length }}</span></h1>
+		</div>
+	<h1>1: CSS-wizardry</h1>
+	<button style="height: 90px; width: 140px; background-color: peru; font-size: 10pt; font-weight: bolder;text-align: center;
+	line-height: 4;" >
+	<a href="#" style=" display:block;
+	float: right;
+	box-sizing:border-box;
+	width:50px;
+	height:50px;
+	border-width:12px;
+	border-style: solid;
+	border-color:white;
+	border-radius:100%;
+	background: -webkit-linear-gradient(-45deg, transparent 0%, transparent 46%, black 46%,  black 56%,transparent 56%, transparent 100%), -webkit-linear-gradient(45deg, transparent 0%, transparent 46%, black 46%,  black 56%,transparent 56%, transparent 100%);
+	background-color:white;
+	box-shadow:0px 0px 5px 2px white
+	(0,0,0,0.5);
+	transition: all 0.3s ease;"></a> Delete</button>
+	<hr/>
+		<!-- TODO LIST -->
+		<div id="todo-list" class="row">
+				
+				<!-- <input type="text" ng-click="deleteTodo(todo._id)"> -->
+			<div class="col-sm-4 col-sm-offset-4">
+			
+				
+
+				<!-- LOOP OVER THE TODOS IN $scope.todos -->
+				<ol  ng-repeat="todo in stodos">
+					<li> {{ todo.text }}     <button type="text" ng-click="deleteTodo(todo._id)"></button> </li> </ol> </hr>
+						
+				</ol>
+
+				
+
+			</div>
+		</div>
+		<h1>3: Search</h1>
+		<!-- FORM TO SEARCH KEYWORDS -->
+		<div id="todo-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center" placeholder="Search here..." ng-model="searchData.text">
+					</div>
+
+					<!-- createToDo() WILL CREATE NEW TODOS -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="searchTodo()">Search</button>
+				</form>
+			</div>
+		</div>
+
+		<!-- FORM TO ADD keywords -->
+		<div id="todo-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center" placeholder="Populate the database first to get the result in search" ng-model="formData.text">
+					</div>
+
+					<!-- createToDo() WILL CREATE NEW TODOS -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+				</form>
+			</div>
+		</div>
+
+
+	</div>
+
+</body>
+</html>
